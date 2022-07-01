@@ -1,0 +1,265 @@
+{
+	"info": {
+		"_postman_id": "e4ce28c6-2357-431a-91ba-a2effa2b3c02",
+		"name": "API Colln",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET",
+			"item": [
+				{
+					"name": "GetUser",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3527d1b1-c24d-4e14-b1f7-a5702f3d342d",
+								"exec": [
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "952bfa4c-5028-41b3-b0e9-846d6dd9d6ef",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/users?page=2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetUserList",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d7bfddd5-e5a6-4420-8f8c-f48d264148ca",
+								"exec": [
+									"pm.test(\"Verify that the response time is less then 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"",
+									"pm.test(\"Verify Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "45f37b5a-0048-4ed5-8b48-0f0d1ec62a6b",
+								"exec": [
+									"console.log(\"i m in prerequest section\")"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "ce84a494-9bbe-449e-b2a8-8b09b7e74290",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/users?page=2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ScriptTest",
+					"_postman_id": "d95fcc86-ff39-450d-94f1-d41c9a5ddb99",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": ""
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "fb024cc6-bf17-46ec-94ab-9542aefe71d6"
+		},
+		{
+			"name": "POST",
+			"item": [
+				{
+					"name": "UserRegistration",
+					"_postman_id": "7936de07-f959-4988-b617-fea7c238b7da",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{password}}\"\r\n}"
+						},
+						"url": "https://reqres.in/{{endpoint}}"
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "b2fc754b-c00f-43b2-b3c4-f18bfa79eacf"
+		},
+		{
+			"name": "POST2",
+			"item": [
+				{
+					"name": "RegisterUser",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "444c0feb-72c7-4816-83a0-9639e75e8bb5",
+								"exec": [
+									"tests[\"contains email\"] = responseBody.has(data.email);",
+									"",
+									"tests[\"contains password\"] = responseBody.has(data[\"password\"]);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "9b287ae2-8ee8-4fe2-bd4a-2bba767d987f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{password}}}\"\r\n}"
+						},
+						"url": "https://reqres.in/{{endpoint}}"
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "9256d4f3-2a0a-466a-80a1-ba0b573516e6"
+		},
+		{
+			"name": "Soap",
+			"item": [
+				{
+					"name": "Soapwsdl",
+					"_postman_id": "4695d7bc-8279-4589-91b2-cf16405ada26",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": ""
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "86671a2f-4c3e-44f8-b9c0-4b82f0d1ad40"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "621212d3-4c68-4617-b564-a5a4b84b1ae6",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "b33b5f48-78c4-41d3-884f-55d37e8e9529",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "3104fea3-bd27-42ab-bb33-3915d35e4fa1",
+			"key": "url",
+			"value": "https://reqres.in",
+			"type": "string"
+		}
+	]
+}
